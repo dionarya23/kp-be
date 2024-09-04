@@ -22,6 +22,7 @@ type ErrorResponse struct {
 
 type iV1Customer interface {
 	Register(c echo.Context) error
+	Login(c echo.Context) error
 }
 
 func New(v1Customer *V1Customer) iV1Customer {

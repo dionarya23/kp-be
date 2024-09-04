@@ -11,6 +11,7 @@ type sCustomerUsecase struct {
 
 type CustomerUsecase interface {
 	Register(*entities.ParamsCreateCustomer) (*entities.ResultAuth, error)
+	Login(p *ParamsLogin) (*ResultLogin, error)
 }
 
 func New(

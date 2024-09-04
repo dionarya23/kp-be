@@ -14,9 +14,9 @@ func (i *sCustomerRepository) Create(p *entities.ParamsCreateCustomer) (*entitie
 		return nil, err
 	}
 
-	query := "INSERT INTO customers (full_name, legal_name, nik, birth_place, birth_date, salary, ktp_photo, selfie_photo) VALUES (?, ?, ?, ?, ?, ?, ?, ?)"
+	query := "INSERT INTO Customers (full_name, legal_name, nik, birth_place, birth_date, salary, ktp_photo, selfie_photo, password, phone_number) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"
 
-	result, err := i.DB.Exec(query, p.FullName, p.LegalName, p.NIK, p.BirthPlace, birthDate, p.Salary, p.KTPPhoto, p.SelfiePhoto)
+	result, err := i.DB.Exec(query, p.FullName, p.LegalName, p.NIK, p.BirthPlace, birthDate, p.Salary, p.KTPPhoto, p.SelfiePhoto, p.Password, p.PhoneNumber)
 	if err != nil {
 		log.Printf("Error inserting customer: %s", err)
 		return nil, err

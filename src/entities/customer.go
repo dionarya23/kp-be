@@ -12,6 +12,8 @@ type Customer struct {
 	Salary      float64   `json:"salary"`
 	KTPPhoto    string    `json:"ktp_photo"`
 	SelfiePhoto string    `json:"selfie_photo"`
+	Password    string    `json:"password"`
+	PhoneNumber string    `json:"phone_number"`
 	CreatedAt   time.Time `json:"created_at"`
 	UpdatedAt   time.Time `json:"updated_at"`
 }
@@ -25,6 +27,8 @@ type ParamsCreateCustomer struct {
 	Salary      float64 `json:"salary" validate:"required,gt=0"`
 	KTPPhoto    string  `json:"ktp_photo" validate:"required,url"`
 	SelfiePhoto string  `json:"selfie_photo" validate:"required,url"`
+	Password    string  `json:"password" validate:"required,min=6"`
+	PhoneNumber string  `json:"phone_number"`
 }
 
 type ParamsCustomer struct {
@@ -37,6 +41,8 @@ type ParamsCustomer struct {
 	Salary      float64
 	KTPPhoto    string
 	SelfiePhoto string
+	Password    string
+	PhoneNumber string
 }
 
 type ResultRegsiterCustomer struct {

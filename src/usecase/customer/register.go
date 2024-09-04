@@ -19,6 +19,15 @@ func (i *sCustomerUsecase) Register(p *entities.ParamsCreateCustomer) (*entities
 		return nil, ErrNikAlreadyUsed
 	}
 
+	filters = entities.ParamsCustomer{
+		PhoneNumber: p.PhoneNumber,
+	}
+
+	checkPhoneNumber, _ := i.customerRepository.IsExists(&filters)
+	if checkPhoneNumber {
+		return nil, ErrPhoneNumberAlreadyUsed
+	}
+
 	customer, err := i.customerRepository.Create(p)
 	if err != nil {
 		return nil, err

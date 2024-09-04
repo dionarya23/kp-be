@@ -12,4 +12,5 @@ func (i *V1Routes) MountCustomer() {
 	})
 
 	g.POST("/register", customerController.Register)
+	g.POST("/login", customerController.Login)
 }

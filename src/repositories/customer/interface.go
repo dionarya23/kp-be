@@ -13,6 +13,7 @@ type sCustomerRepository struct {
 type CustomerRepository interface {
 	Create(*entities.ParamsCreateCustomer) (*entities.Customer, error)
 	IsExists(*entities.ParamsCustomer) (bool, error)
+	FindOne(*entities.ParamsCustomer) (*entities.Customer, error)
 }
 
 func New(db *sql.DB) CustomerRepository {

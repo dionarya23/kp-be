@@ -12,7 +12,7 @@ func (i *sCustomerRepository) IsExists(filters *entities.ParamsCustomer) (bool, 
 	var params []interface{}
 	var conditions []string
 
-	sb.WriteString("SELECT EXISTS (SELECT 1 FROM customers WHERE ")
+	sb.WriteString("SELECT EXISTS (SELECT 1 FROM Customers WHERE ")
 
 	if filters.ID != 0 {
 		params = append(params, filters.ID)
@@ -22,6 +22,11 @@ func (i *sCustomerRepository) IsExists(filters *entities.ParamsCustomer) (bool, 
 	if filters.NIK != "" {
 		params = append(params, filters.NIK)
 		conditions = append(conditions, "nik = ?")
+	}
+
+	if filters.PhoneNumber != "" {
+		params = append(params, filters.PhoneNumber)
+		conditions = append(conditions, "phone_number = ?")
 	}
 
 	sb.WriteString(strings.Join(conditions, " AND "))

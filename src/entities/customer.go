@@ -42,3 +42,8 @@ type ParamsCustomer struct {
 type ResultRegsiterCustomer struct {
 	ID int64 `json:"id"`
 }
+
+type ResultAuth struct {
+	ID          string `json:"userId"`
+	AccessToken string `json:"accessToken"`
+}

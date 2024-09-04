@@ -10,7 +10,7 @@ type sCustomerUsecase struct {
 }
 
 type CustomerUsecase interface {
-	Register(*entities.ParamsCreateCustomer) (*entities.ResultRegsiterCustomer, error)
+	Register(*entities.ParamsCreateCustomer) (*entities.ResultAuth, error)
 }
 
 func New(

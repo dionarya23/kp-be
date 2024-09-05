@@ -17,6 +17,7 @@ type LoanUsecase interface {
 	Create(p *entities.ParamsLoan) (*entities.ResultCreateLoan, error)
 	FindOne(loanId int64, customerId int64) (*entities.Loan, error)
 	FindMany(customerId int64) ([]*entities.Loan, error)
+	Payment(p *entities.ParamsPaymentLoan) (int, error)
 }
 
 func New(

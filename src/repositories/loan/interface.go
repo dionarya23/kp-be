@@ -14,6 +14,7 @@ type LoanRepository interface {
 	Create(*entities.ParamsLoan) (*entities.Loan, error)
 	FindOne(loanId int64, customerId int64) (*entities.Loan, error)
 	FindMany(customerId int64) ([]*entities.Loan, error)
+	Update(loanId *int64, p *entities.ParamsPaymentLoan) error
 }
 
 func New(db *sql.DB) LoanRepository {

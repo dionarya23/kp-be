@@ -22,6 +22,11 @@ type ParamsCreateLoan struct {
 	Purpose string  `json:"purpose,omitempty"`
 }
 
+type ParamsCreatePaymentLoan struct {
+	LoanId float64 `json:"loan_id"`
+	Amount int     `json:"amount"`
+}
+
 type ParamsLoan struct {
 	ID                 int64
 	CustomerID         int64
@@ -32,6 +37,14 @@ type ParamsLoan struct {
 	MonthlyInstallment float64
 	RemainingBalance   float64
 	Status             string
+}
+
+type ParamsPaymentLoan struct {
+	CustomerId       float64
+	LoanId           float64
+	Amount           int
+	RemainingBalance float64
+	Status           string
 }
 
 type ResultCreateLoan struct {

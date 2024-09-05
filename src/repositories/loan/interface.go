@@ -12,6 +12,7 @@ type sLoanRepository struct {
 
 type LoanRepository interface {
 	Create(*entities.ParamsLoan) (*entities.Loan, error)
+	FindOne(loanId int64, customerId int64) (*entities.Loan, error)
 }
 
 func New(db *sql.DB) LoanRepository {

@@ -18,8 +18,7 @@ func (i *sLoanUsecase) Create(p *entities.ParamsLoan) (*entities.ResultCreateLoa
 		return nil, customerusecase.ErrApps
 	}
 
-	customerLimit, err := i.limitRepository.FindOne(p.CustomerID, p.Tenor)
-
+	customerLimit, err := i.limitRepository.FindMany(p.CustomerID, p.Tenor)
 	if err != nil {
 		return nil, customerusecase.ErrApps
 	}

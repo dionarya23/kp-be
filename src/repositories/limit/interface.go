@@ -11,7 +11,7 @@ type sLimitRepository struct {
 }
 
 type LimitRepository interface {
-	FindOne(customerId int64, tenor int) ([]*entities.Limit, error)
+	FindMany(customerId int64, tenor int) ([]*entities.Limit, error)
 }
 
 func New(db *sql.DB) LimitRepository {

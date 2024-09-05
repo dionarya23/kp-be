@@ -13,4 +13,5 @@ func (i *V1Routes) MountLoan() {
 	})
 
 	g.POST("/", customerController.Create, middlewares.Authentication())
+	g.GET("/:id", customerController.FindOne, middlewares.Authentication())
 }

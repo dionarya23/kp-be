@@ -22,6 +22,7 @@ type ParamsCreateLoan struct {
 }
 
 type ParamsLoan struct {
+	ID                 int64
 	CustomerID         int64
 	Amount             float64
 	Tenor              int

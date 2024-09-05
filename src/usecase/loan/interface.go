@@ -15,6 +15,7 @@ type sLoanUsecase struct {
 
 type LoanUsecase interface {
 	Create(p *entities.ParamsLoan) (*entities.ResultCreateLoan, error)
+	FindOne(loanId int64, customerId int64) (*entities.Loan, error)
 }
 
 func New(

@@ -6,7 +6,7 @@ import (
 	"github.com/dionarya23/kredit-plus/src/entities"
 )
 
-func (i *sLimitRepository) FindOne(customerId int64, tenor int) ([]*entities.Limit, error) {
+func (i *sLimitRepository) FindMany(customerId int64, tenor int) ([]*entities.Limit, error) {
 	query := "SELECT id, customer_id, tenor, limit_amount, created_at, updated_at FROM Limits WHERE customer_id = ? AND tenor = ?"
 
 	rows, err := i.DB.Query(query, customerId, tenor)

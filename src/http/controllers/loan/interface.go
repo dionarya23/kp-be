@@ -22,6 +22,7 @@ type ErrorResponse struct {
 
 type iV1Loan interface {
 	Create(c echo.Context) error
+	FindOne(c echo.Context) error
 }
 
 func New(v1Loan *V1Loan) iV1Loan {

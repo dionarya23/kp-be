@@ -10,6 +10,7 @@ type Loan struct {
 	Purpose            string    `json:"purpose,omitempty"`
 	InterestRate       float64   `json:"interest_rate"`
 	MonthlyInstallment float64   `json:"monthly_installment"`
+	RemainingBalance   float64   `json:"remaining_balance"`
 	Status             string    `json:"status"`
 	CreatedAt          time.Time `json:"created_at"`
 	UpdatedAt          time.Time `json:"updated_at"`
@@ -29,6 +30,7 @@ type ParamsLoan struct {
 	Purpose            string
 	InterestRate       float64
 	MonthlyInstallment float64
+	RemainingBalance   float64
 	Status             string
 }
 

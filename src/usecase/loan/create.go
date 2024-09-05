@@ -37,6 +37,7 @@ func (i *sLoanUsecase) Create(p *entities.ParamsLoan) (*entities.ResultCreateLoa
 		InterestRate:       interest,
 		MonthlyInstallment: installment,
 		Status:             "pending",
+		RemainingBalance:   p.Amount,
 	})
 
 	if err != nil {

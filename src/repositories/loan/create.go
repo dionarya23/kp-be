@@ -8,9 +8,9 @@ import (
 )
 
 func (i *sLoanRepository) Create(p *entities.ParamsLoan) (*entities.Loan, error) {
-	query := "INSERT INTO Loans (customer_id, amount, tenor, purpose, interest_rate, monthly_installment, status) VALUES (?, ?, ?, ?, ?, ?, ?)"
+	query := "INSERT INTO Loans (customer_id, amount, tenor, purpose, interest_rate, monthly_installment, status, remaining_balance) VALUES (?, ?, ?, ?, ?, ?, ?)"
 
-	result, err := i.DB.Exec(query, p.CustomerID, p.Amount, p.Tenor, p.Purpose, p.InterestRate, p.MonthlyInstallment, p.Status)
+	result, err := i.DB.Exec(query, p.CustomerID, p.Amount, p.Tenor, p.Purpose, p.InterestRate, p.MonthlyInstallment, p.Status, p.Amount)
 	if err != nil {
 		log.Printf("Error inserting loan: %s", err)
 		return nil, err
@@ -30,6 +30,7 @@ func (i *sLoanRepository) Create(p *entities.ParamsLoan) (*entities.Loan, error)
 		Purpose:            p.Purpose,
 		InterestRate:       p.InterestRate,
 		MonthlyInstallment: p.MonthlyInstallment,
+		RemainingBalance:   p.Amount,
 		Status:             p.Status,
 		CreatedAt:          time.Now(),
 		UpdatedAt:          time.Now(),

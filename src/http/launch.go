@@ -37,6 +37,8 @@ func (i *Http) Launch() {
 	})
 
 	v1.MountPing()
+	v1.MountCustomer()
+	v1.MountLoan()
 
 	e.Logger.Fatal(e.Start(":8080"))
 }

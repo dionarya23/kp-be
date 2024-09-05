@@ -2,6 +2,7 @@ package v1routes
 
 import (
 	loanv1controller "github.com/dionarya23/kredit-plus/src/http/controllers/loan"
+	"github.com/dionarya23/kredit-plus/src/http/middlewares"
 )
 
 func (i *V1Routes) MountLoan() {
@@ -11,5 +12,5 @@ func (i *V1Routes) MountLoan() {
 		DB: i.DB,
 	})
 
-	g.POST("/", customerController.Create)
+	g.POST("/", customerController.Create, middlewares.Authentication())
 }

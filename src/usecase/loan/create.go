@@ -18,6 +18,16 @@ func (i *sLoanUsecase) Create(p *entities.ParamsLoan) (*entities.ResultCreateLoa
 		return nil, customerusecase.ErrApps
 	}
 
+	customerLimit, err := i.limitRepository.FindOne(p.CustomerID, p.Tenor)
+
+	if err != nil {
+		return nil, customerusecase.ErrApps
+	}
+
+	if len(customerLimit) == 0 || p.Amount > customerLimit[0].LimitAmount {
+		return nil, customerusecase.ErrLimit
+	}
+
 	var interest = calculateInterest(p.Amount, p.Tenor)
 	var installment = calculateInstallment(p.Amount, interest, p.Tenor)
 	newLoan, err := i.loanRepository.Create(&entities.ParamsLoan{

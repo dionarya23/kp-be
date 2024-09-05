@@ -5,6 +5,7 @@ import (
 
 	"github.com/dionarya23/kredit-plus/src/entities"
 	customerrepository "github.com/dionarya23/kredit-plus/src/repositories/customer"
+	limitrepository "github.com/dionarya23/kredit-plus/src/repositories/limit"
 	loanrepository "github.com/dionarya23/kredit-plus/src/repositories/loan"
 	loanUsecase "github.com/dionarya23/kredit-plus/src/usecase/loan"
 	"github.com/labstack/echo/v4"
@@ -33,6 +34,7 @@ func (i *V1Loan) Create(c echo.Context) (err error) {
 	cu := loanUsecase.New(
 		loanrepository.New(i.DB),
 		customerrepository.New(i.DB),
+		limitrepository.New(i.DB),
 	)
 
 	data, err := cu.Create(&entities.ParamsLoan{

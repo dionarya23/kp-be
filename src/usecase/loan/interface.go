@@ -3,12 +3,14 @@ package loanusecase
 import (
 	"github.com/dionarya23/kredit-plus/src/entities"
 	customer "github.com/dionarya23/kredit-plus/src/repositories/customer"
+	limit "github.com/dionarya23/kredit-plus/src/repositories/limit"
 	loan "github.com/dionarya23/kredit-plus/src/repositories/loan"
 )
 
 type sLoanUsecase struct {
 	loanRepository     loan.LoanRepository
 	customerRepository customer.CustomerRepository
+	limitRepository    limit.LimitRepository
 }
 
 type LoanUsecase interface {
@@ -18,9 +20,11 @@ type LoanUsecase interface {
 func New(
 	loanRepository loan.LoanRepository,
 	customerRepository customer.CustomerRepository,
+	limitRepository limit.LimitRepository,
 ) LoanUsecase {
 	return &sLoanUsecase{
 		loanRepository:     loanRepository,
 		customerRepository: customerRepository,
+		limitRepository:    limitRepository,
 	}
 }
